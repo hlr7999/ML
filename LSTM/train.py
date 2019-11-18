@@ -33,7 +33,7 @@ test_x = Variable(torch.unsqueeze(test_data.test_data, dim=1), \
     volatile=True).type(torch.FloatTensor)/255
 test_y = test_data.test_labels
 
-lstm = LSTM(INPUT_SIZE, HIDDEN_SIZE, NUM_LAYERS).to(device)
+lstm = LSTM(INPUT_SIZE, HIDDEN_SIZE, NUM_LAYERS, 10).to(device)
 
 optimizer = torch.optim.Adam(lstm.parameters(), lr=LR)
 loss_func = nn.CrossEntropyLoss()
