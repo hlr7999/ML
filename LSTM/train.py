@@ -29,9 +29,9 @@ test_data = dsets.MNIST(root='./mnist', train=False)
 train_loader = Data.DataLoader(dataset=train_data, \
     batch_size=BATCH_SIZE, shuffle=True)
 
-test_x = Variable(torch.unsqueeze(test_data.test_data, dim=1), \
-    volatile=True).type(torch.FloatTensor)/255
-test_y = test_data.test_labels
+with torch.no_grad():
+    test_x = Variable(torch.unsqueeze(test_data.data, dim=1)).type(torch.FloatTensor)/255
+test_y = test_data.targets
 
 lstm = LSTM(INPUT_SIZE, HIDDEN_SIZE, NUM_LAYERS, 10).to(device)
 
