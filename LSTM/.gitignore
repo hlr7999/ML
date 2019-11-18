@@ -1,1 +1,3 @@
 mnist/
+model/
+__pycache__/

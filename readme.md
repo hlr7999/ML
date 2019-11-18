@@ -2,4 +2,5 @@
 
 - [x] VGG16
 - [x] LSTM
+- [x] BiLSTM
 
