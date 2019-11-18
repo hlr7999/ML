@@ -1,12 +1,20 @@
 import torch
 from torch import nn
 
-class BiRNN(nn.Module):
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+class BiLSTM(nn.Module):
     def __init__(self, input_size, hidden_size, num_layers, num_classes):
-        super(BiRNN, self).__init__()
+        super(BiLSTM, self).__init__()
         self.hidden_size = hidden_size
         self.num_layers = num_layers
-        self.lstm = nn.LSTM(input_size, hidden_size, num_layers, batch_first=True, bidirectional=True)
+        self.lstm = nn.LSTM(
+            input_size, 
+            hidden_size, 
+            num_layers, 
+            batch_first = True, 
+            bidirectional = True
+        )
         self.fc = nn.Linear(hidden_size*2, num_classes)  # 隐层包含向前层和向后层两层，所以隐层共有两倍的Hidden_size
     
     def forward(self, x):
