@@ -3,4 +3,5 @@
 - [x] VGG16
 - [x] LSTM
 - [x] BiLSTM
+- [x] Seq2Seq (nmt 机器翻译)
 
